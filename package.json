@@ -1,6 +1,6 @@
 {
   "name": "stream-try-catch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simulate a try catch on a stream pipeline",
   "repository": "jeromew/stream-try-catch",
   "dependencies": {
