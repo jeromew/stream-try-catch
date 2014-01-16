@@ -1,0 +1,14 @@
+{
+  "name": "stream-try-catch",
+  "version": "0.0.1",
+  "description": "Simulate a try catch on a stream pipeline",
+  "repository": "jeromew/stream-try-catch",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0"
+  },
+  "scripts": {
+    "test": "make test"
+  }
+}
