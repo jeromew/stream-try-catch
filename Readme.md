@@ -33,6 +33,11 @@ streamC.emit('error', new Error);
 
 Begin the setup of try/catch sequence on a pipeline
 
+Use with
+```js
+var _try = require('stream-try-catch').try;
+```
+
 Any call to try(src).pipe(dest, opt) will automatically
 
  * forward all 'error' events from src to dest.
@@ -43,9 +48,11 @@ you can catch errors on the pipeline either by adding a classic on('error', oner
 try(streamA).pipe(streamB).pipe(streamC).catch(onerror);
 ```
 
-This will forward all errors from streamA, streamB and streamC to onerror
+This will :
+ * forward all errors from streamA, streamB and streamC to onerror
+ * close the try/catch block
 
-Note that a catch stops the try/catch block so in
+For example, in
 
 ```js
 var stream = try(streamA).pipe(streamB).catch(onerror).pipe(streamC);
@@ -53,7 +60,17 @@ var stream = try(streamA).pipe(streamB).catch(onerror).pipe(streamC);
 
 the errors from A and B will bubble to `onerror` but they will not bubble to streamC.
 
-In a way, the try/catch guards
+
+### catch(stream, onerror)
+
+This is another way to build the try/catch block albeit probably less elegant.
+
+```
+var _catch = require('stream-try-catch').catch;
+
+var stream = _catch(_try(streamA).pipe(streamB), onerror).pipe(streamC);
+
+```
 
 
 ## Installation
